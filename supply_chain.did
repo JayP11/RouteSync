@@ -1,0 +1,70 @@
+type Product = record {
+    id: text;
+    name: text;
+    description: text;
+    manufacturer: text;
+    batch_number: text;
+    production_date: nat64;
+    ingredients: vec text;
+    certifications: vec text;
+};
+
+type EventType = variant {
+    Production;
+    QualityCheck;
+    Packaging;
+    Shipping;
+    Customs;
+    Delivery;
+    Retail;
+};
+
+type SupplyChainEvent = record {
+    id: text;
+    product_id: text;
+    event_type: EventType;
+    location: text;
+    timestamp: nat64;
+    actor: text;
+    details: text;
+    coordinates: opt record { float64; float64 };
+    temperature: opt float64;
+    humidity: opt float64;
+};
+
+type SupplyChainTrace = record {
+    product_id: text;
+    events: vec SupplyChainEvent;
+    created_at: nat64;
+    last_updated: nat64;
+};
+
+type ParticipantRole = variant {
+    Manufacturer;
+    Supplier;
+    Distributor;
+    Retailer;
+    Consumer;
+    Auditor;
+};
+
+type Participant = record {
+    id: text;
+    name: text;
+    role: ParticipantRole;
+    location: text;
+    public_key: text;
+    is_verified: bool;
+};
+
+service : {
+    "test_simple": () -> (text);
+    "create_product": (text, text, text, text, vec text, vec text) -> (text);
+    "add_supply_chain_event": (text, EventType, text, text, text, opt record { float64; float64 }, opt float64, opt float64) -> (text);
+    "register_participant": (text, ParticipantRole, text, text) -> (text);
+    "get_product": (text) -> (opt Product) query;
+    "get_supply_chain_trace": (text) -> (opt SupplyChainTrace) query;
+    "get_all_products": () -> (vec Product) query;
+    "get_participants": () -> (vec Participant) query;
+    "verify_product_authenticity": (text) -> (bool) query;
+}; 
