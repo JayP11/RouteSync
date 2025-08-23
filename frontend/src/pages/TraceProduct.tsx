@@ -211,7 +211,27 @@ const TraceProduct: React.FC = () => {
   }
 
   return (
-    <Box>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        background:
+          "linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%)",
+        p: { xs: 2, sm: 3, md: 4 },
+        position: "relative",
+        overflow: "hidden",
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background:
+            "radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%)",
+          pointerEvents: "none",
+        },
+      }}
+    >
       {/* Header */}
       <Box sx={{ mb: 4 }}>
         <Button
@@ -219,9 +239,16 @@ const TraceProduct: React.FC = () => {
           onClick={() => navigate("/products")}
           sx={{
             mb: 2,
-            color: "#1976d2",
+            color: "#00d4ff",
+            borderColor: "rgba(0, 212, 255, 0.3)",
+            border: "1px solid",
+            borderRadius: "12px",
+            px: 3,
+            py: 1,
+            fontWeight: 600,
             "&:hover": {
-              backgroundColor: "rgba(25, 118, 210, 0.08)",
+              backgroundColor: "rgba(0, 212, 255, 0.1)",
+              borderColor: "#00d4ff",
             },
           }}
         >
@@ -231,7 +258,7 @@ const TraceProduct: React.FC = () => {
           variant="h3"
           gutterBottom
           sx={{
-            background: "linear-gradient(135deg, #1976d2 0%, #42a5f5 100%)",
+            background: "linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%)",
             backgroundClip: "text",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
@@ -242,7 +269,10 @@ const TraceProduct: React.FC = () => {
         >
           Supply Chain Trace
         </Typography>
-        <Typography variant="h6" color="text.secondary" sx={{ opacity: 0.8 }}>
+        <Typography
+          variant="h6"
+          sx={{ color: "rgba(255, 255, 255, 0.7)", opacity: 0.8 }}
+        >
           Track the complete journey of your product through the supply chain
         </Typography>
       </Box>
@@ -253,9 +283,10 @@ const TraceProduct: React.FC = () => {
           p: 4,
           mb: 3,
           borderRadius: "20px",
-          background: "linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)",
-          boxShadow: "0 12px 40px rgba(0, 0, 0, 0.1)",
-          border: "1px solid rgba(255, 255, 255, 0.2)",
+          background: "rgba(26, 26, 46, 0.95)",
+          backdropFilter: "blur(20px)",
+          boxShadow: "0 20px 40px rgba(0, 0, 0, 0.4)",
+          border: "1px solid rgba(255, 255, 255, 0.1)",
           position: "relative",
           overflow: "hidden",
           "&::before": {
@@ -266,22 +297,25 @@ const TraceProduct: React.FC = () => {
             right: 0,
             height: "4px",
             background:
-              "linear-gradient(90deg, #1976d2 0%, #42a5f5 50%, #90caf9 100%)",
+              "linear-gradient(90deg, #00d4ff 0%, #7c3aed 50%, #f093fb 100%)",
           },
         }}
       >
         {isLoading ? (
           <Box sx={{ textAlign: "center", py: 4 }}>
-            <Typography variant="h6" color="text.secondary">
+            <Typography variant="h6" sx={{ color: "rgba(255, 255, 255, 0.7)" }}>
               Loading product information...
             </Typography>
           </Box>
         ) : !product ? (
           <Box sx={{ textAlign: "center", py: 4 }}>
-            <Typography variant="h6" color="error.main" gutterBottom>
+            <Typography variant="h6" sx={{ color: "#ff6b6b" }} gutterBottom>
               Product Not Found
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography
+              variant="body2"
+              sx={{ color: "rgba(255, 255, 255, 0.6)" }}
+            >
               The product with batch number "{batchNumber}" could not be found.
             </Typography>
           </Box>
@@ -293,7 +327,7 @@ const TraceProduct: React.FC = () => {
                 <Typography
                   variant="h4"
                   gutterBottom
-                  sx={{ fontWeight: 700, color: "primary.main" }}
+                  sx={{ fontWeight: 700, color: "white" }}
                 >
                   {product.name}
                 </Typography>
@@ -301,7 +335,7 @@ const TraceProduct: React.FC = () => {
                   variant="h6"
                   color="text.secondary"
                   paragraph
-                  sx={{ mb: 3 }}
+                  sx={{ mb: 3, color: "white" }}
                 >
                   {product.description}
                 </Typography>
@@ -309,21 +343,30 @@ const TraceProduct: React.FC = () => {
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                   <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                     <VerifiedIcon color="primary" />
-                    <Typography variant="body1" sx={{ fontWeight: 600 }}>
+                    <Typography
+                      variant="body1"
+                      sx={{ color: "white", fontWeight: 600 }}
+                    >
                       <strong>Manufacturer:</strong> {product.manufacturer}
                     </Typography>
                   </Box>
 
                   <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                     <LocationIcon color="primary" />
-                    <Typography variant="body1" sx={{ fontWeight: 600 }}>
+                    <Typography
+                      variant="body1"
+                      sx={{ color: "white", fontWeight: 600 }}
+                    >
                       <strong>Batch Number:</strong> {product.batch_number}
                     </Typography>
                   </Box>
 
                   <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                     <TimelineIcon color="primary" />
-                    <Typography variant="body1" sx={{ fontWeight: 600 }}>
+                    <Typography
+                      variant="body1"
+                      sx={{ color: "white", fontWeight: 600 }}
+                    >
                       <strong>Production Date:</strong>{" "}
                       {product.production_date}
                     </Typography>
@@ -338,7 +381,7 @@ const TraceProduct: React.FC = () => {
                 <Typography
                   variant="h6"
                   gutterBottom
-                  sx={{ fontWeight: 600, mb: 2 }}
+                  sx={{ fontWeight: 600, mb: 2, color: "white" }}
                 >
                   Certifications
                 </Typography>
@@ -357,7 +400,7 @@ const TraceProduct: React.FC = () => {
                 <Typography
                   variant="h6"
                   gutterBottom
-                  sx={{ fontWeight: 600, mb: 2 }}
+                  sx={{ fontWeight: 600, mb: 2, color: "white" }}
                 >
                   Ingredients
                 </Typography>
@@ -391,9 +434,10 @@ const TraceProduct: React.FC = () => {
           p: 4,
           mt: 3,
           borderRadius: "20px",
-          background: "linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)",
-          boxShadow: "0 12px 40px rgba(0, 0, 0, 0.1)",
-          border: "1px solid rgba(255, 255, 255, 0.2)",
+          background: "rgba(26, 26, 46, 0.95)",
+          backdropFilter: "blur(20px)",
+          boxShadow: "0 20px 40px rgba(0, 0, 0, 0.4)",
+          border: "1px solid rgba(255, 255, 255, 0.1)",
           position: "relative",
           overflow: "hidden",
           "&::before": {
@@ -404,7 +448,7 @@ const TraceProduct: React.FC = () => {
             right: 0,
             height: "4px",
             background:
-              "linear-gradient(90deg, #1976d2 0%, #42a5f5 50%, #90caf9 100%)",
+              "linear-gradient(90deg, #00d4ff 0%, #7c3aed 50%, #f093fb 100%)",
           },
         }}
       >
@@ -436,7 +480,7 @@ const TraceProduct: React.FC = () => {
                 bottom: 0,
                 width: 6,
                 background:
-                  "linear-gradient(180deg, #1976d2 0%, #42a5f5 50%, #90caf9 100%)",
+                  "linear-gradient(180deg, #00d4ff 0%, #7c3aed 50%, #f093fb 100%)",
                 borderRadius: 3,
                 transform: "translateX(-50%)",
                 zIndex: 0,
@@ -448,7 +492,10 @@ const TraceProduct: React.FC = () => {
           {/* Loading state */}
           {isLoading && (
             <Box sx={{ textAlign: "center", py: 4 }}>
-              <Typography variant="h6" color="text.secondary">
+              <Typography
+                variant="h6"
+                sx={{ color: "rgba(255, 255, 255, 0.7)" }}
+              >
                 Loading product data...
               </Typography>
             </Box>
@@ -462,8 +509,8 @@ const TraceProduct: React.FC = () => {
                 py: 6,
                 px: 4,
                 borderRadius: "16px",
-                background: "linear-gradient(135deg, #f8f9fa 0%, #e3f2fd 100%)",
-                border: "2px dashed #90caf9",
+                background: "rgba(26, 26, 46, 0.8)",
+                border: "2px dashed rgba(0, 212, 255, 0.5)",
                 mx: 4,
               }}
             >
@@ -472,19 +519,20 @@ const TraceProduct: React.FC = () => {
               />
               <Typography
                 variant="h6"
-                color="text.secondary"
                 gutterBottom
-                sx={{ fontWeight: 600, color: "#1976d2" }}
+                sx={{ fontWeight: 600, color: "#00d4ff" }}
               >
                 No Supply Chain Events Found
               </Typography>
-              <Typography variant="body1" color="text.secondary" sx={{ mb: 1 }}>
+              <Typography
+                variant="body1"
+                sx={{ mb: 1, color: "rgba(255, 255, 255, 0.8)" }}
+              >
                 This product doesn't have any supply chain events recorded yet.
               </Typography>
               <Typography
                 variant="body2"
-                color="text.secondary"
-                sx={{ opacity: 0.8 }}
+                sx={{ opacity: 0.8, color: "rgba(255, 255, 255, 0.6)" }}
               >
                 Events will appear here once they are added to the supply chain.
               </Typography>
@@ -521,34 +569,29 @@ const TraceProduct: React.FC = () => {
                       display: "inline-block",
                       maxWidth: "100%",
                       borderRadius: "16px",
-                      background: `linear-gradient(135deg, ${getEventColor(
-                        event.event_type
-                      )}.50, ${getEventColor(event.event_type)}.100)`,
-                      border: `2px solid ${getEventColor(
-                        event.event_type
-                      )}.main`,
+                      background: "rgba(26, 26, 46, 0.95)",
+                      backdropFilter: "blur(20px)",
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
                       position: "relative",
-                      boxShadow: `0 8px 32px rgba(0, 0, 0, 0.15)`,
+                      boxShadow: "0 20px 40px rgba(0, 0, 0, 0.4)",
                       transition: "all 0.3s ease",
                       "&:hover": {
                         transform: "translateY(-4px)",
-                        boxShadow: `0 12px 40px rgba(0, 0, 0, 0.2)`,
+                        boxShadow: "0 25px 50px rgba(0, 0, 0, 0.5)",
+                        borderColor: "rgba(255, 255, 255, 0.2)",
                       },
                       "&::before": {
                         content: '""',
                         position: "absolute",
-                        top: "50%",
-                        [index % 2 === 0 ? "right" : "left"]: -8,
-                        transform: "translateY(-50%)",
-                        width: 0,
-                        height: 0,
-                        borderTop: "8px solid transparent",
-                        borderBottom: "8px solid transparent",
-                        [index % 2 === 0
-                          ? "borderLeft"
-                          : "borderRight"]: `8px solid ${getEventColor(
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: "4px",
+                        background: `linear-gradient(90deg, ${getEventColor(
                           event.event_type
-                        )}.main`,
+                        )}.main 0%, ${getEventColor(
+                          event.event_type
+                        )}.light 100%)`,
                       },
                     }}
                   >
@@ -570,7 +613,7 @@ const TraceProduct: React.FC = () => {
                         component="div"
                         sx={{
                           fontWeight: 600,
-                          color: "text.primary",
+                          color: "white",
                           lineHeight: 1.2,
                         }}
                       >
@@ -584,8 +627,17 @@ const TraceProduct: React.FC = () => {
                         <Box
                           sx={{ display: "flex", alignItems: "center", gap: 1 }}
                         >
-                          <LocationIcon fontSize="small" color="primary" />
-                          <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                          <LocationIcon
+                            fontSize="small"
+                            sx={{ color: "rgba(255, 255, 255, 0.8)" }}
+                          />
+                          <Typography
+                            variant="body2"
+                            sx={{
+                              fontWeight: 500,
+                              color: "rgba(255, 255, 255, 0.8)",
+                            }}
+                          >
                             {event.location}
                           </Typography>
                         </Box>
@@ -594,8 +646,17 @@ const TraceProduct: React.FC = () => {
                         <Box
                           sx={{ display: "flex", alignItems: "center", gap: 1 }}
                         >
-                          <VerifiedIcon fontSize="small" color="secondary" />
-                          <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                          <VerifiedIcon
+                            fontSize="small"
+                            sx={{ color: "rgba(255, 255, 255, 0.8)" }}
+                          />
+                          <Typography
+                            variant="body2"
+                            sx={{
+                              fontWeight: 500,
+                              color: "rgba(255, 255, 255, 0.8)",
+                            }}
+                          >
                             {event.actor}
                           </Typography>
                         </Box>
@@ -623,10 +684,9 @@ const TraceProduct: React.FC = () => {
                               gap: 1,
                               p: 1.5,
                               borderRadius: "12px",
-                              background:
-                                "linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%)",
-                              border: "2px solid #ff9800",
-                              boxShadow: "0 4px 15px rgba(255, 152, 0, 0.2)",
+                              background: "rgba(255, 152, 0, 0.15)",
+                              border: "1px solid rgba(255, 152, 0, 0.3)",
+                              boxShadow: "0 4px 15px rgba(255, 152, 0, 0.1)",
                               transition: "all 0.3s ease",
                               "&:hover": {
                                 transform: "translateY(-2px)",
@@ -640,7 +700,7 @@ const TraceProduct: React.FC = () => {
                             />
                             <Typography
                               variant="body2"
-                              sx={{ fontWeight: 600, color: "#e65100" }}
+                              sx={{ fontWeight: 600, color: "white" }}
                             >
                               {event.temperature}°C
                             </Typography>
@@ -654,10 +714,9 @@ const TraceProduct: React.FC = () => {
                               gap: 1,
                               p: 1.5,
                               borderRadius: "12px",
-                              background:
-                                "linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)",
-                              border: "2px solid #2196f3",
-                              boxShadow: "0 4px 15px rgba(33, 150, 243, 0.2)",
+                              background: "rgba(33, 150, 243, 0.15)",
+                              border: "1px solid rgba(33, 150, 243, 0.3)",
+                              boxShadow: "0 4px 15px rgba(33, 150, 243, 0.1)",
                               transition: "all 0.3s ease",
                               "&:hover": {
                                 transform: "translateY(-2px)",
@@ -671,7 +730,7 @@ const TraceProduct: React.FC = () => {
                             />
                             <Typography
                               variant="body2"
-                              sx={{ fontWeight: 600, color: "#1565c0" }}
+                              sx={{ fontWeight: 600, color: "white" }}
                             >
                               {event.humidity}% RH
                             </Typography>
@@ -689,10 +748,9 @@ const TraceProduct: React.FC = () => {
                           gap: 1,
                           p: 1.5,
                           borderRadius: "12px",
-                          background:
-                            "linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%)",
-                          border: "2px solid #4caf50",
-                          boxShadow: "0 4px 15px rgba(76, 175, 80, 0.2)",
+                          background: "rgba(76, 175, 80, 0.15)",
+                          border: "1px solid rgba(76, 175, 80, 0.3)",
+                          boxShadow: "0 4px 15px rgba(76, 175, 80, 0.1)",
                           justifyContent:
                             index % 2 === 0 ? "flex-end" : "flex-start",
                           transition: "all 0.3s ease",
@@ -708,7 +766,7 @@ const TraceProduct: React.FC = () => {
                         />
                         <Typography
                           variant="body2"
-                          sx={{ fontWeight: 600, color: "#2e7d32" }}
+                          sx={{ fontWeight: 600, color: "white" }}
                         >
                           GPS: {event.coordinates.lat.toFixed(6)},{" "}
                           {event.coordinates.lng.toFixed(6)}
@@ -743,13 +801,13 @@ const TraceProduct: React.FC = () => {
                       alignItems: "center",
                       justifyContent: "center",
                       border: 4,
-                      borderColor: "white",
-                      boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
+                      borderColor: "rgba(255, 255, 255, 0.9)",
+                      boxShadow: "0 4px 20px rgba(0, 0, 0, 0.4)",
                       mb: 1,
                       transition: "all 0.3s ease",
                       "&:hover": {
                         transform: "scale(1.1)",
-                        boxShadow: "0 6px 25px rgba(0, 0, 0, 0.3)",
+                        boxShadow: "0 6px 25px rgba(0, 0, 0, 0.5)",
                       },
                     }}
                   >
@@ -760,19 +818,15 @@ const TraceProduct: React.FC = () => {
                   <Typography
                     variant="caption"
                     sx={{
-                      color: "text.secondary",
+                      color: "rgba(255, 255, 255, 0.8)",
                       textAlign: "center",
                       whiteSpace: "nowrap",
                       fontWeight: 600,
-                      background:
-                        "linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)",
+                      background: "rgba(26, 26, 46, 0.9)",
                       px: 2,
-                      py: 1,
-                      borderRadius: "12px",
-                      border: "2px solid #e0e0e0",
-                      boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
-                      fontSize: "0.75rem",
-                      letterSpacing: "0.5px",
+                      py: 0.5,
+                      borderRadius: "8px",
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
                     }}
                   >
                     {format(new Date(event.timestamp), "MMM dd, yyyy HH:mm")}
@@ -830,7 +884,7 @@ const TraceProduct: React.FC = () => {
               sx={{
                 borderRadius: "16px",
                 boxShadow: "0 8px 32px rgba(0, 0, 0, 0.15)",
-                background: "linear-gradient(135deg, #1976d2 0%, #42a5f5 100%)",
+                background: "linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%)",
                 color: "white",
                 transition: "all 0.3s ease",
                 "&:hover": {
@@ -854,7 +908,7 @@ const TraceProduct: React.FC = () => {
               sx={{
                 borderRadius: "16px",
                 boxShadow: "0 8px 32px rgba(0, 0, 0, 0.15)",
-                background: "linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%)",
+                background: "linear-gradient(135deg, #7c3aed 0%, #f093fb 100%)",
                 color: "white",
                 transition: "all 0.3s ease",
                 "&:hover": {
@@ -873,35 +927,7 @@ const TraceProduct: React.FC = () => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Card
-              sx={{
-                borderRadius: "16px",
-                boxShadow: "0 8px 32px rgba(0, 0, 0, 0.15)",
-                background: "linear-gradient(135deg, #ed6c02 0%, #ff9800 100%)",
-                color: "white",
-                transition: "all 0.3s ease",
-                "&:hover": {
-                  transform: "translateY(-4px)",
-                  boxShadow: "0 12px 40px rgba(0, 0, 0, 0.25)",
-                },
-              }}
-            >
-              <CardContent sx={{ textAlign: "center", p: 3 }}>
-                <Typography variant="h3" sx={{ fontWeight: 700, mb: 1 }}>
-                  {events.length > 0
-                    ? Math.ceil(
-                        (Date.now() - new Date(events[0].timestamp).getTime()) /
-                          (1000 * 60 * 60 * 24)
-                      )
-                    : 0}
-                </Typography>
-                <Typography variant="body1" sx={{ fontWeight: 500 }}>
-                  Days in Transit
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
+
           <Grid item xs={12} sm={6} md={3}>
             <Card
               sx={{

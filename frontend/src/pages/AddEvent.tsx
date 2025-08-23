@@ -295,6 +295,33 @@ const AddEvent: React.FC = () => {
           pointerEvents: "none",
         },
         p: { xs: 2, sm: 3, md: 3 }, // Responsive padding
+        // Global styling for MenuItem components
+        "& .MuiMenuItem-root": {
+          backgroundColor: "rgba(26, 26, 46, 0.95)",
+          color: "white",
+          "&:hover": {
+            backgroundColor: "rgba(26, 26, 46, 1)",
+          },
+          "&.Mui-selected": {
+            backgroundColor: "rgba(26, 26, 46, 0.95)",
+            "&:hover": {
+              backgroundColor: "rgba(26, 26, 46, 1)",
+            },
+          },
+        },
+        // Global styling for Select dropdown
+        "& .MuiPopover-root .MuiPaper-root": {
+          backgroundColor: "rgba(26, 26, 46, 0.98)",
+          backdropFilter: "blur(20px)",
+          border: "1px solid rgba(255, 255, 255, 0.1)",
+          boxShadow: "0 20px 40px rgba(0, 0, 0, 0.4)",
+        },
+        // Override all Material-UI input styling with dark backgrounds
+        "& .MuiInputBase-input, & .MuiOutlinedInput-input, & .MuiSelect-select":
+          {
+            backgroundColor: "rgba(26, 26, 46, 0.8) !important",
+            color: "white !important",
+          },
       }}
     >
       {/* Header Section */}
@@ -491,23 +518,28 @@ const AddEvent: React.FC = () => {
               sx={{
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "12px",
-                  backgroundColor: "rgba(255, 255, 255, 0.05)",
+                  background: "black",
+                  // backgroundColor: "rgba(26, 26, 46, 0.8)",
                   border: "1px solid rgba(255, 255, 255, 0.1)",
                   color: "white",
                   "& fieldset": {
                     border: "none",
                   },
                   "&:hover": {
-                    backgroundColor: "rgba(255, 255, 255, 0.08)",
+                    backgroundColor: "rgba(26, 26, 46, 0.9)",
                     borderColor: "#00d4ff",
                   },
                   "&.Mui-focused": {
-                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                    backgroundColor: "rgba(26, 26, 46, 0.95)",
                     borderColor: "#00d4ff",
                     borderWidth: "2px",
                   },
                   "& input": {
                     color: "white",
+                  },
+                  "& .MuiSelect-select": {
+                    color: "white",
+                    backgroundColor: "rgba(26, 26, 46, 0.8) !important",
                   },
                 },
                 "& .MuiInputLabel-root": {
@@ -523,6 +555,10 @@ const AddEvent: React.FC = () => {
                   color: errors.product_id
                     ? "#ff6b6b"
                     : "rgba(255, 255, 255, 0.6)",
+                },
+                "& .MuiMenu-paper": {
+                  backgroundColor: "black !important",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
                 },
               }}
             >
@@ -561,23 +597,27 @@ const AddEvent: React.FC = () => {
               sx={{
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "12px",
-                  backgroundColor: "rgba(255, 255, 255, 0.05)",
+                  backgroundColor: "rgba(26, 26, 46, 0.8)",
                   border: "1px solid rgba(255, 255, 255, 0.1)",
                   color: "white",
                   "& fieldset": {
                     border: "none",
                   },
                   "&:hover": {
-                    backgroundColor: "rgba(255, 255, 255, 0.08)",
+                    backgroundColor: "rgba(26, 26, 46, 0.9)",
                     borderColor: "#00d4ff",
                   },
                   "&.Mui-focused": {
-                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                    backgroundColor: "rgba(26, 26, 46, 0.95)",
                     borderColor: "#00d4ff",
                     borderWidth: "2px",
                   },
                   "& input": {
                     color: "white",
+                  },
+                  "& .MuiSelect-select": {
+                    color: "white",
+                    backgroundColor: "rgba(26, 26, 46, 0.8) !important",
                   },
                 },
                 "& .MuiInputLabel-root": {
@@ -593,6 +633,10 @@ const AddEvent: React.FC = () => {
                   color: errors.event_type
                     ? "#ff6b6b"
                     : "rgba(255, 255, 255, 0.6)",
+                },
+                "& .MuiMenu-paper": {
+                  backgroundColor: "black !important",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
                 },
               }}
             >
@@ -665,18 +709,18 @@ const AddEvent: React.FC = () => {
               sx={{
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "12px",
-                  backgroundColor: "rgba(255, 255, 255, 0.05)",
+                  backgroundColor: "rgba(26, 26, 46, 0.8)",
                   border: "1px solid rgba(255, 255, 255, 0.1)",
                   color: "white",
                   "& fieldset": {
                     border: "none",
                   },
                   "&:hover": {
-                    backgroundColor: "rgba(255, 255, 255, 0.08)",
+                    backgroundColor: "rgba(26, 26, 46, 0.9)",
                     borderColor: "#00d4ff",
                   },
                   "&.Mui-focused": {
-                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                    backgroundColor: "rgba(26, 26, 46, 0.95)",
                     borderColor: "#00d4ff",
                     borderWidth: "2px",
                   },
@@ -716,18 +760,18 @@ const AddEvent: React.FC = () => {
               sx={{
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "12px",
-                  backgroundColor: "rgba(255, 255, 255, 0.05)",
+                  backgroundColor: "rgba(26, 26, 46, 0.8)",
                   border: "1px solid rgba(255, 255, 255, 0.1)",
                   color: "white",
                   "& fieldset": {
                     border: "none",
                   },
                   "&:hover": {
-                    backgroundColor: "rgba(255, 255, 255, 0.08)",
+                    backgroundColor: "rgba(26, 26, 46, 0.9)",
                     borderColor: "#00d4ff",
                   },
                   "&.Mui-focused": {
-                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                    backgroundColor: "rgba(26, 26, 46, 0.95)",
                     borderColor: "#00d4ff",
                     borderWidth: "2px",
                   },
@@ -784,18 +828,18 @@ const AddEvent: React.FC = () => {
               sx={{
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "12px",
-                  backgroundColor: "rgba(255, 255, 255, 0.05)",
+                  backgroundColor: "rgba(26, 26, 46, 0.8)",
                   border: "1px solid rgba(255, 255, 255, 0.1)",
                   color: "white",
                   "& fieldset": {
                     border: "none",
                   },
                   "&:hover": {
-                    backgroundColor: "rgba(255, 255, 255, 0.08)",
+                    backgroundColor: "rgba(26, 26, 46, 0.9)",
                     borderColor: "#f093fb",
                   },
                   "&.Mui-focused": {
-                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                    backgroundColor: "rgba(26, 26, 46, 0.95)",
                     borderColor: "#f093fb",
                     borderWidth: "2px",
                   },
@@ -830,18 +874,18 @@ const AddEvent: React.FC = () => {
               sx={{
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "12px",
-                  backgroundColor: "rgba(255, 255, 255, 0.05)",
+                  backgroundColor: "rgba(26, 26, 46, 0.8)",
                   border: "1px solid rgba(255, 255, 255, 0.1)",
                   color: "white",
                   "& fieldset": {
                     border: "none",
                   },
                   "&:hover": {
-                    backgroundColor: "rgba(255, 255, 255, 0.08)",
+                    backgroundColor: "rgba(26, 26, 46, 0.9)",
                     borderColor: "#f093fb",
                   },
                   "&.Mui-focused": {
-                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                    backgroundColor: "rgba(26, 26, 46, 0.95)",
                     borderColor: "#f093fb",
                     borderWidth: "2px",
                   },
@@ -927,18 +971,18 @@ const AddEvent: React.FC = () => {
               sx={{
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "12px",
-                  backgroundColor: "rgba(255, 255, 255, 0.05)",
+                  backgroundColor: "rgba(26, 26, 46, 0.8)",
                   border: "1px solid rgba(255, 255, 255, 0.1)",
                   color: "white",
                   "& fieldset": {
                     border: "none",
                   },
                   "&:hover": {
-                    backgroundColor: "rgba(255, 255, 255, 0.08)",
+                    backgroundColor: "rgba(26, 26, 46, 0.9)",
                     borderColor: "#00d4ff",
                   },
                   "&.Mui-focused": {
-                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                    backgroundColor: "rgba(26, 26, 46, 0.95)",
                     borderColor: "#00d4ff",
                     borderWidth: "2px",
                   },
@@ -978,18 +1022,18 @@ const AddEvent: React.FC = () => {
               sx={{
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "12px",
-                  backgroundColor: "rgba(255, 255, 255, 0.05)",
+                  backgroundColor: "rgba(26, 26, 46, 0.8)",
                   border: "1px solid rgba(255, 255, 255, 0.1)",
                   color: "white",
                   "& fieldset": {
                     border: "none",
                   },
                   "&:hover": {
-                    backgroundColor: "rgba(255, 255, 255, 0.08)",
+                    backgroundColor: "rgba(26, 26, 46, 0.9)",
                     borderColor: "#00d4ff",
                   },
                   "&.Mui-focused": {
-                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                    backgroundColor: "rgba(26, 26, 46, 0.95)",
                     borderColor: "#00d4ff",
                     borderWidth: "2px",
                   },

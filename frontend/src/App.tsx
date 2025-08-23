@@ -42,6 +42,24 @@ const theme = createTheme({
         },
       },
     },
+    MuiMenu: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: "black !important",
+          border: "1px solid rgba(255, 255, 255, 0.1) !important",
+          color: "white !important",
+        },
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          "&:hover": {
+            backgroundColor: "rgba(255, 255, 255, 0.1) !important",
+          },
+        },
+      },
+    },
   },
 });
 
